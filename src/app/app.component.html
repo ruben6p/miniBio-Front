@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row justify-content-center">
+
+        <div class="col-12 col-lg-5 head" [ngClass]='{dark:isDarkMode}'><!-- las etiquetas por bootstrap se aplican automaticamente-->
+            <img src="../assets/foto/IMG_20171126_133750.jpg" alt="viaje">
+            <h1>{{user.name}}</h1>
+            <p>{{user.description}}</p>
+        </div>
+        <!--class="enlace col-sm-1 text-align-center"-->
+        <a *ngFor="let item of user.links" href="{{item.link}}" class="col-log-8 col-md-12 col-sm-12"> <!-- interpolación por texto es cuando llevas llaves-->
+            <div>
+                <fa-icon [icon]="item.icon"></fa-icon>&nbsp;{{item.title}}  
+                
+                <!-- Si ponemos llaves no funciona porque haría una interpolaicón por atributo con los corchetes -->
+            </div
+        ></a>
+
+
+            <!--
+            <button><fa-icon [icon]="twitter"></fa-icon>&nbsp;<a href="https://twitter.com/home">Twitter</a></button>
+            <button><fa-icon [icon]="linkedin"></fa-icon>&nbsp;<a href="https://www.linkedin.com/in/rub%C3%A9n-prado-mart%C3%ADn-pozuelo-b99763134/">Linkedin</a></button>
+            -->
+   
+    </div>
+</div>
+
+
+<!-- Vamos a crear el boton modo oscuro-->
+
+
+<button class="oscuro" (click)="changeMode()">
+   <fa-icon *ngIf="isDarkMode" [icon]="moon"></fa-icon>
+   <fa-icon *ngIf="!isDarkMode" [icon]="sun"></fa-icon>
+</button>
+
+
+<router-outlet></router-outlet>
